@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "ConsultarQuestoes";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> @*//remover*@
+
+<h2>Consultar Questões</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>Disciplina:</th>
+            <th>Assunto:</th>
+        </tr>
+        <tr>
+            <td>
+                <select class="form-control" id="Disciplinas" name="Disciplinas">
+                    <option>Selecionar</option>
+                    <option>Disciplina1</option>
+                    <option>Disciplina2</option>
+                </select>
+            </td>
+            <td>
+                <select class="form-control" id="Assuntos" name="Assuntos">
+                    <option>Selecionar</option>
+                    <option>Assunto1</option>
+                    <option>Assunto2</option>
+                </select>
+            </td>
+            <td>
+                <button witdh="50" title="Consultar" class="btn btn-default btn-sm btn-toggle" data-element="#divGridConsultaQuestao" onclick="ConsultarProvas()">Consultar</button>
+            </td>@*//remover btn-toggle e data-element*@
+        </tr>
+    </table>
+</div>
+
+<div id="divGridConsultaQuestao" style="display:none">
+    @*Só visualização, deverá ser feito por um grid de grid que carrega depois da consulta...*@
+    <div>
+        <div class="col-lg-9">
+            <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Disciplina - Assunto - Enunciado..." />
+        </div>
+        <div class="col-lg-3">
+            <button witdh="50" title="Editar" class="btn btn-default btn-sm" onclick="EditarQuestao()">Editar</button>
+            <button witdh="50" title="Excluir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ConfirmaExcluir">Excluir</button>
+        </div>
+    </div>
+    <div>
+        <div class="col-lg-9">
+            <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Disciplina - Assunto - Enunciado..." />
+        </div>
+        <div class="col-lg-3">
+            <button witdh="50" title="Editar" class="btn btn-default btn-sm" onclick="EditarQuestao()">Editar</button>
+            <button witdh="50" title="Excluir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ErroExcluir">Excluir</button>
+        </div>
+    </div>
+    <div>
+        <div class="col-lg-9">
+            <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Disciplina - Assunto - Enunciado..." />
+        </div>
+        <div class="col-lg-3">
+            <button witdh="50" title="Editar" class="btn btn-default btn-sm" onclick="EditarQuestao()">Editar</button>
+            <button witdh="50" title="Excluir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ConfirmaExcluir">Excluir</button>
+            @*<button witdh="50" title="Visualizar" class="btn btn-default btn-sm" onclick="VisualizarAl()">Visualizar</button>*@
+        </div>
+    </div>
+</div>
+
+@* Modal para confirmar exclusão *@
+<div class="modal fade" id="ConfirmaExcluir">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Excluir Questão:</h4>
+            </div>
+            <div class="modal-body">
+                <p>Você deseja Excluir essa questão?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="ExcluirQuestão()">Sim</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Aqui existe apenas para exemplo, tem que criar a função para exibir a mesma mensagem*@
+<div class="modal fade" id="ErroExcluir">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Não é Possível Excluir:</h4>
+            </div>
+            <div class="modal-body">
+                <p>Essa questão já está vinculada a uma prova, você deve Inativa-la!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script>
+    function ExcluirQuestão() {
+        console.log("Questão deletada...");
+        $('#ConfirmaExcluir').modal('hide');
+    }
+
+    function EditarQuestao() {
+        location.href = "http://localhost:54994/CadastrarQuestoes/CadastrarQuestoes";
+    }
+
+    $(function () { @*//remover*@
+        $(".btn-toggle").click(function (e) {
+            e.preventDefault();
+            el = $(this).data('element');
+            $(el).toggle();
+        });
+    });
+</script>

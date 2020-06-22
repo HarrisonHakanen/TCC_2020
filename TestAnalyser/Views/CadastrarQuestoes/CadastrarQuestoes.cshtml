@@ -1,0 +1,306 @@
+﻿@Styles.Render("~/Scripts/jqueryUI")
+
+@{
+    ViewBag.Title = "Cadastrar Questões";
+}
+
+<h2>Cadastrar Questoes</h2>
+<div class="col-lg-12 tab-content">
+    @*Abas para cada tipo de questão ...*@
+    <br />
+    <ul class="nav nav-tabs" style="padding-bottom:0px; margin-bottom:0px;">
+        <li id="SE" class="active"><a class="borda" data-toggle="tab" href="#divSE">Simples-Escolha</a></li>
+        <li id="ME"><a class="borda" data-toggle="tab" href="#divME">Multripla-Escolha</a></li>
+        <li id="VF"><a class="borda" data-toggle="tab" href="#divVF">Verdadeiro Ou Falso</a></li>
+        <li id="DT"><a class="borda" data-toggle="tab" href="#divDT">Dissertativa</a></li>
+    </ul>
+
+    @*Cada DIV terá um tipo de questão que irá ser apresentado em tela...*@
+    <br />
+    <div id="divSE" class="tab-pane fade in active">
+        <h2>Tipo: Simples-Escolha</h2>
+        <br />
+        <form method="post">
+            <fieldset>
+                <div class="col-lg-12">
+                    <div class="col-lg-9">
+                        <h3>Questão: </h3>
+                        <input class="oitop" type="text" name="SEquestao" id="SEquestao" value="" />
+                    </div>
+                    <div class="col-lg-3">
+                        <h3>Assunto: </h3>
+                        <input class="setep" type="text" name="SEAssunto" id="SEAssunto" value="" />
+                    </div>
+                </div>
+                <div class="col-lg-12 mtop5">
+                    <div style="margin-left: 100px;">
+                        <input id="SMcertaA" name="SMcerta" type="radio" value="A" />
+                        <label>A) </label>
+                        <input class="setep" type="text" name="SMopcaoR1" value="" id="SMopcaoR1" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <input id="SMcertaB" name="SMcerta" type="radio" value="B" />
+                        <label>B) </label>
+                        <input class="setep" type="text" name="SMopcaoR2" value="" id="SMopcaoR2" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <input id="SMcertaC" name="SMcerta" type="radio" value="C" />
+                        <label>C) </label>
+                        <input class="setep" type="text" name="SMopcaoR3" value="" id="SMopcaoR3" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <input id="SMcertaD" name="SMcerta" type="radio" value="D" />
+                        <label>D) </label>
+                        <input class="setep" type="text" name="SMopcaoR4" value="" id="SMopcaoR4" />
+                    </div>
+
+                    @*E abaixo das opções deverá conter essa opção para adicionar uma linha de questão a mais*@
+                    <br />
+                    <div style="margin-left: 50px;">
+                        <button witdh="50" title="Salvar" class="btn-default" onclick="AddLinha()">Adicionar Alternativa</button>
+                        @*<a href=""> ADD Linha</a>*@
+                    </div>
+                    <br />
+
+                </div>
+
+                <div>
+                    <label>&nbsp;</label>
+                    <button witdh="50" title="Salvar" class="btn btn-default btn-sm" onclick="SalvarSE()">Salvar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div id="divME" class="tab-pane fade">
+        <h2>Tipo: Multipla-Escolha</h2>
+        <br />
+
+        <form method="post">
+            <fieldset>
+                <div class="col-lg-12">
+                    <div class="col-lg-9">
+                        <h3>Questão: </h3>
+                        <input class="oitop" type="text" name="MEquestao" id="MEquestao" value="" />
+                        @*<input class="oitop" cols="30" rows="5" wrap="hard" name="MEquestao" id="MEquestao" ></input>*@
+                    </div>
+                    <div class="col-lg-3">
+                        <h3>Assunto: </h3>
+                        <input class="setep" type="text" name="MEAssunto" id="MEAssunto" value="" />
+                    </div>
+                </div>
+
+                @*Qualquer coisa tirar essa DIV aqui*@
+                <div class="col-lg-12 mtop5">
+                    <div style="margin-left: 100px;">
+                        <label>A) </label>
+                        <input class="setep" type="text" name="MEopcaoR1" value="" id="MEopcaoR1" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <label>B) </label>
+                        <input class="setep" type="text" name="MEopcaoR2" value="" id="MEopcaoR2" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <label>C) </label>
+                        <input class="setep" type="text" name="MEopcaoR3" value="" id="MEopcaoR3" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <label>D) </label>
+                        <input class="setep" type="text" name="MEopcaoR4" value="" id="MEopcaoR4" />
+                    </div>
+
+                    @*E abaixo das opções deverá conter essa opção para adicionar uma linha de questão a mais*@
+                    <br />
+                    <div style="margin-left: 50px;">
+                        <button witdh="50" title="Salvar" class="btn-default" onclick="AddLinha()">Adicionar Alternativa</button>
+                        @*<a href=""> ADD Linha</a>*@
+                    </div>
+                    <br />
+
+                </div>
+
+                <div class="col-lg-12 mtop5">
+                    <div style="margin-left: 100px;">
+                        <input type="checkbox" id="chbxCertaA" name="MEcertaA" value="A">
+                        <input class="setep" type="text" name="MEopcaoR1" value="" id="MEopcaoR1" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <input type="checkbox" id="chbxCertaB" name="MEcertaB" value="B">
+                        <input class="setep" type="text" name="MEopcaoR2" value="" id="MEopcaoR2" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <input type="checkbox" id="chbxCertaC" name="MEcertaC" value="C">
+                        <input class="setep" type="text" name="MEopcaoR3" value="" id="MEopcaoR3" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <input type="checkbox" id="chbxCertaD" name="MEcertaD" value="D">
+                        <input class="setep" type="text" name="MEopcaoR4" value="" id="MEopcaoR4" />
+                    </div>
+
+                    <br />
+                    <div style="margin-left: 50px;">
+                        <button witdh="50" title="Salvar" class="btn-default" onclick="AddLinha()">Adicionar Alternativa</button>
+                        @*<a href=""> ADD Linha</a>*@
+                    </div>
+                    <br />
+
+                </div>
+
+                <div>
+                    <label>&nbsp;</label>
+                    <button witdh="50" title="Salvar" class="btn btn-default btn-sm" onclick="SalvarME()">Salvar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div id="divVF" class="tab-pane fade">
+        <h2>Tipo: Verdadeiro ou Falso</h2>
+        <br />
+
+        <form method="post">
+            <fieldset>
+                <div class="col-lg-12">
+                    <div class="col-lg-9">
+                        <h3>Questão: </h3>
+                        @*<input class="oitop" type="text" name="VFquestao" id="VFquestao" value="" />*@
+                        <textarea class="oitop" cols="20" rows="3" wrap="hard" name="VFquestao" id="VFquestao" ></textarea>
+                    </div>
+                    <div class="col-lg-3">
+                        <h3>Assunto: </h3>
+                        <input class="setep" type="text" name="VFAssunto" id="VFAssunto" value="" />
+                    </div>
+                </div>
+
+                <div class="col-lg-12 mtop5">
+                    <div style="margin-left: 100px;">
+                        <label>I) </label>
+                        <input class="setep" type="text" name="VFopcaoR1" value="" id="VFopcaoR1" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <label>II) </label>
+                        <input class="setep" type="text" name="VFopcaoR2" value="" id="VFopcaoR2" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <label>III) </label>
+                        <input class="setep" type="text" name="VFopcaoR3" value="" id="VFopcaoR3" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <label>IV) </label>
+                        <input class="setep" type="text" name="VFopcaoR4" value="" id="VFopcaoR4" />
+                    </div>
+
+                    @*E abaixo das opções deverá conter essa opção para adicionar uma linha de questão a mais*@
+                    <br />
+                    <div style="margin-left: 50px;">
+                        <button witdh="50" title="Salvar" class="btn-default" onclick="AddLinha()">Adicionar Alternativa</button>
+                        @*<a href=""> ADD Linha</a>*@
+                    </div>
+                    <br />
+
+                </div>
+                
+                <div class="col-lg-12 mtop5">
+                    <div style="margin-left: 100px;">
+                        <input id="VFcertaA" name="VFcerta" type="radio" value="A" />
+                        <label>A) </label>
+                        <input class="setep" type="text" name="VFopcaoR1" value="" id="VFopcaoR1" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <input id="VFcertaB" name="VFcerta" type="radio" value="B" />
+                        <label>B) </label>
+                        <input class="setep" type="text" name="VFopcaoR2" value="" id="VFopcaoR2" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <input id="VFcertaC" name="VFcerta" type="radio" value="C" />
+                        <label>C) </label>
+                        <input class="setep" type="text" name="VFopcaoR3" value="" id="VFopcaoR3" />
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <input id="VFcertaD" name="VFcerta" type="radio" value="D" />
+                        <label>D) </label>
+                        <input class="setep" type="text" name="VFopcaoR4" value="" id="VFopcaoR4" />
+                    </div>
+
+                    <br />
+                    <div style="margin-left: 50px;">
+                        <button witdh="50" title="Salvar" class="btn-default" onclick="AddLinha()">Adicionar Alternativa</button>
+                        @*<a href=""> ADD Linha</a>*@
+                    </div>
+                    <br />
+
+                </div>
+
+                <div>
+                    <label>&nbsp;</label>
+                    <button witdh="50" title="Salvar" class="btn btn-default btn-sm" onclick="SalvarVF()">Salvar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div id="divDT" class="tab-pane fade">
+        <h2>Tipo: Dissertativa</h2>
+        <form method="post">
+            <fieldset>
+                <div style="margin-left: 100px;">
+                    <br />
+                    <div class="col-lg-9">
+                        <h3>Questão: </h3>
+                        <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTquestao" id="DTquestao"></textarea>
+                    </div>
+                    <div class="col-lg-3">
+                        <h3>Assunto: </h3>
+                        <input class="setep" type="text" name="DTAssunto" id="DTAssunto" value="" />
+                    </div>
+                </div>
+
+                <br />
+                <div>
+                    <div style="margin-left: 100px;" class="col-lg-9">
+                        <br />
+                        <h4>Resposta: </h4>
+                        <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTreposta" id="DTreposta"></textarea>
+                    </div>
+                    <div style="margin-left: 100px;" class="col-lg-3">
+
+                    </div>
+                </div>
+
+                <br />
+                <div>
+                    <br />
+                    <label>&nbsp;</label>
+                    <button witdh="50" title="Salvar" class="btn btn-default btn-sm btn-diss" onclick="SalvarDT()">Salvar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+@*Cada botão, caixa de texto, e outros atributos da tela tem sua ID especifica, para salvar deverá ser resgatado os valores atraves dessas ID's*@
+
+@section Scripts{
+    <script>
+
+        function AddLinha() {
+
+        }
+
+        function SalvarSE() {
+
+        }
+
+        function SalvarME() {
+
+        }
+
+        function SalvarVF() {
+
+        }
+
+        function SalvarDT() {
+
+        }
+
+    </script>
+}

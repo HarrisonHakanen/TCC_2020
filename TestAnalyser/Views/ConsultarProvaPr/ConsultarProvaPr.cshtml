@@ -1,0 +1,285 @@
+﻿
+@{
+    ViewBag.Title = "ConsultarProvaPr";
+}
+
+<h2>Consultar Provas</h2>
+
+<div class="col-lg-12 tab-content">
+    <table class="table">
+        <tr>
+            <th>Pend.</th>
+            <th>Data da Prova</th>
+            <th>Disciplina</th>
+            <th>Turma</th>
+            <th>Prova</th>
+            <th>    </th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="chbxPendentes" name="Pendentes" value="Pend" /></td>
+            <td><input class="" type="text" name="DataProva" value="" id="DataProva" placeholder="11/05/2020" /></td>
+            <td>
+                <select class="form-control" id="Disciplina" name="Disciplina">
+                    <option>Disciplinas</option>
+                    <option>Seila1</option>
+                    <option>Seila2</option>
+                </select>
+            </td>
+            <td>
+                <select class="form-control" id="Turma" name="Turma">
+                    <option>Turmas</option>
+                    <option>Turma1</option>
+                    <option>Turma2</option>
+                </select>
+            </td>
+            <td>
+                <select class="form-control" id="Prova" name="Prova">
+                    <option>Prova</option>
+                    <option>Prova1</option>
+                </select>
+            </td>
+            <td>
+                <button id="btnConsult" witdh="50" title="Consultar" class="btn btn-default btn-sm btn-toggle" onclick="ConsultarProvasPend()">Consultar</button>
+                @*<button witdh="50" title="Consultar" class="btn btn-default btn-sm" onclick="ConsultarProvas()">Consultar</button>*@
+            </td>
+        </tr>
+    </table>
+    <br />
+    @*<table class="table">
+            <tr>
+            </tr>
+        </table>*@
+    <div id="divGridConsultaPr">
+        <div>
+            <div class="col-lg-8">
+                <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Data - Disciplina - Turma - Assunto - Aluno" />
+            </div>
+            <div class="col-lg-4">
+                <button witdh="50" title="Visualizar" class="btn btn-default btn-sm" data-toggle="modal" data-target="#VisualizarProva">Visualizar</button>
+                <button witdh="50" title="Corrigir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#CorrigirProva">Corrigir</button>
+                @*<button witdh="50" title="Corrigir" class="btn btn-default btn-sm" onclick="CorrigirPr()">Corrigir</button>*@
+            </div>
+        </div>
+        @*Só visualização, deverá ser feito por um grid de grid que carrega depois da consulta...*@
+        <div>
+            <div class="col-lg-8">
+                <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Data - Disciplina - Turma - Assunto - Aluno" />
+            </div>
+            <div class="col-lg-4">
+                <button witdh="50" title="Visualizar" class="btn btn-default btn-sm" data-toggle="modal" data-target="#VisualizarProva">Visualizar</button>
+                <button witdh="50" title="Corrigir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#CorrigirProva">Corrigir</button>
+                @*<button witdh="50" title="Corrigir" class="btn btn-default btn-sm" onclick="CorrigirPr()">Corrigir</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div><br /></div>
+
+
+
+
+@* modal de visualização de Prova (sem corrigir) *@
+<div class="modal fade novep" id="VisualizarProva">
+    <div class="modal-dialog novep">
+        <div class="modal-content">
+            <div>
+                <h2>Questão 1</h2>
+                <form method="post">
+                    <fieldset>
+                        <div style="margin-left: 100px;">
+                            <br />
+                            <div class="col-lg-9">
+                                <h3>Questão: </h3>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTquestao" id="DTquestao" placeholder="Quato é 1 + 1?"></textarea>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <div style="margin-left: 100px;" class="col-lg-9">
+                                <br />
+                                <h4>Resposta: </h4>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTreposta" id="DTreposta" placeholder="42"></textarea>
+                            </div>
+                            <div style="margin-left: 100px;" class="col-lg-3">
+
+                            </div>
+                        </div>
+                        <br />
+                    </fieldset>
+                </form>
+            </div>
+            <div>
+                <h2>Questão 2</h2>
+                <form method="post">
+                    <fieldset>
+                        <div style="margin-left: 100px;">
+                            <br />
+                            <div class="col-lg-9">
+                                <h3>Questão: </h3>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTquestao" id="DTquestao"></textarea>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <div style="margin-left: 100px;" class="col-lg-9">
+                                <br />
+                                <h4>Resposta: </h4>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTreposta" id="DTreposta"></textarea>
+                            </div>
+                            <div style="margin-left: 100px;" class="col-lg-3">
+
+                            </div>
+                        </div>
+                        <br />
+                    </fieldset>
+                </form>
+            </div>
+            <div>
+                <label>&nbsp;</label>
+                <button witdh="50" title="Fechar" class="btn btn-default btn-sm btn-diss" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* modal de correção de provas *@
+<div class="modal fade novep" id="CorrigirProva">
+    <div class="modal-dialog novep">
+        <div class="modal-content">
+            <div>
+                <h2>Questão 1</h2>
+                <form method="post">
+                    <fieldset>
+                        <div style="margin-left: 100px;">
+                            <br />
+                            <div class="col-lg-9">
+                                <h3>Questão: </h3>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTquestao" id="DTquestao" placeholder="Quato é 1 + 1?"></textarea>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <div style="margin-left: 100px;" class="col-lg-9">
+                                <br />
+                                <h4>Resposta: </h4>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTreposta" id="DTreposta" placeholder="42"></textarea>
+                            </div>
+                            <div style="margin-left: 100px;" class="col-lg-3">
+
+                            </div>
+                        </div>
+                        <div style="margin-left: 100px;">
+                            <br />
+                            <div class="col-lg-9">
+                                <h3>Observações: </h3>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="ObsResp" id="ObsResp" placeholder="observações do professor..."></textarea>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <br />
+                            <label>&nbsp;</label>
+                            <button witdh="50" title="Salvar" class="btn btn-default btn-sm btn-diss" onclick="SalvarQuestão()">Salvar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div>
+                <h2>Questão 2</h2>
+                <form method="post">
+                    <fieldset>
+                        <div style="margin-left: 100px;">
+                            <br />
+                            <div class="col-lg-9">
+                                <h3>Questão: </h3>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTquestao" id="DTquestao"></textarea>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <div style="margin-left: 100px;" class="col-lg-9">
+                                <br />
+                                <h4>Resposta: </h4>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTreposta" id="DTreposta"></textarea>
+                            </div>
+                            <div style="margin-left: 100px;" class="col-lg-3">
+
+                            </div>
+                        </div>
+                        <div style="margin-left: 100px;">
+                            <br />
+                            <div class="col-lg-9">
+                                <h3>Observações: </h3>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="ObsResp" id="ObsResp"></textarea>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <br />
+                            <label>&nbsp;</label>
+                            <button witdh="50" title="Salvar" class="btn btn-default btn-sm btn-diss" onclick="SalvarQuestão()">Salvar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div>
+                <label>&nbsp;</label>
+                <button witdh="50" title="Salvar" class="btn btn-default btn-sm btn-diss" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* excluir posteriormente tambem... *@
+<div id="divGridConsultaProvaPend" style="display:none">
+    @*Essa consulta deve ser com base no cheackbox de "Pend", = pendentes = não realizadas ainda...*@
+    <div class="col-lg-12">
+        <div id="divGridConsultaPr">
+            <div class="col-lg-8">
+                <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Data - Disciplina - Turma - Assunto" />
+            </div>
+            <div class="col-lg-4">
+                <button witdh="50" title="Editar" class="btn btn-default btn-sm" data-toggle="modal" data-target="#EditarProva">Editar</button>
+                <button witdh="50" title="Excluir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ExcluirProva">Excluir</button>
+                <button witdh="50" title="Vincular" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ExcluirProva">Vincular</button>
+            </div>
+        </div>
+        <div>
+            <div class="col-lg-8">
+                <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Data - Disciplina - Turma - Assunto" />
+            </div>
+            <div class="col-lg-4">
+                <button witdh="50" title="Editar" class="btn btn-default btn-sm" data-toggle="modal" data-target="#EditarProva">Editar</button>
+                <button witdh="50" title="Excluir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ExcluirProva">Excluir</button>
+                <button witdh="50" title="Vincular" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ExcluirProva">Vincular</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var div1 = document.getElementById('divGridConsultaPr'),
+    div2 = document.getElementById('divGridConsultaProvaPend');
+    function switchVisible() {
+        if (!div1) return;
+        if (getComputedStyle(div1).display == 'block') {
+            div1.style.display = 'none';
+            div2.style.display = 'block';
+        } else {
+            div1.style.display = 'block';
+            div2.style.display = 'none';
+        }
+    }
+    document.getElementById('btnConsult').addEventListener('click', switchVisible);
+
+</script>

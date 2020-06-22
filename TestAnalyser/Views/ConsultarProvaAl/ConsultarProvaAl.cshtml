@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "ConsultarProvaAl";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> @*//remover*@
+
+<h2>Consultar Provas</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>Disciplinas</th>
+            <th>Turmas</th>
+        </tr>
+        <tr>
+            <td>
+                <select class="form-control" id="Disciplinas" name="Disciplinas">
+                    <option>Selecionar</option>
+                    <option>Disciplina1</option>
+                    <option>Disciplina2</option>
+                </select>
+            </td>
+            <td>
+                <select class="form-control" id="Turmas" name="Turmas">
+                    <option>Selecionar</option>
+                    <option>Turma1</option>
+                    <option>Turma2</option>
+                </select>
+            </td>
+            <td>
+                <button witdh="50" title="Consultar" class="btn btn-default btn-sm btn-toggle"  data-element="#divGridConsultaAl" onclick="ConsultarProvas()">Consultar</button>
+            </td>@*//remover btn-toggle e data-element*@
+        </tr>
+    </table>
+</div>
+<div id="divGridConsultaAl" style="display:none">
+    @*Só visualização, deverá ser feito por um grid de grid que carrega depois da consulta...*@
+    <div>
+        <div class="col-lg-9">
+            <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Data - Disciplina - Turma - Assunto" />
+        </div>
+        <div class="col-lg-3">
+            <button witdh="50" title="Realizar" class="btn btn-default btn-sm" data-toggle="modal" data-target="#RealizarProva">Realizar</button>
+            @*<button witdh="50" title="Corrigir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ConfirmaRevisao">Solicitar</button>
+    <button witdh="50" title="Visualizar" class="btn btn-default btn-sm" onclick="VisualizarAl()">Visualizar</button>*@
+        </div>
+    </div>
+    <div>
+        <div class="col-lg-9">
+            <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Data - Disciplina - Turma - Assunto" />
+        </div>
+        <div class="col-lg-3">
+            @*<button witdh="50" title="Realizar" class="btn btn-default btn-sm" onclick="RealizarProva()">Realizar</button>*@
+            <button witdh="50" title="Visualizar" class="btn btn-default btn-sm" onclick="VisualizarAl()">Visualizar</button>
+            <button witdh="50" title="Corrigir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ConfirmaRevisao">Revisar</button>
+        </div>
+    </div>
+    <div>
+        <div class="col-lg-9">
+            <input class="novep" type="text" name="Detahes" value="" id="Detahes" placeholder="Data - Disciplina - Turma - Assunto" />
+        </div>
+        <div class="col-lg-3">
+            @*<button witdh="50" title="Realizar" class="btn btn-default btn-sm" onclick="RealizarProva()">Realizar</button>*@
+            <button witdh="50" title="Visualizar" class="btn btn-default btn-sm" onclick="VisualizarAl()">Visualizar</button>
+            @*<button witdh="50" title="Corrigir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ConfirmaRevisao">Solicitar</button>*@
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="ConfirmaRevisao">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Solicitar Revisão:</h4>
+            </div>
+            <div class="modal-body">
+                <p>Você deseja solicitar uma revisão dessa prova? (nomeDaProva)</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="SolicitarRevisao()">Sim</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div class="modal fade" id="RealizarProva">
+    <div class="modal-dialog novep">
+        <div class="modal-content">
+            <div>
+                <h2>Questão 1</h2>
+                <form method="post">
+                    <fieldset>
+                        <div style="margin-left: 100px;">
+                            <br />
+                            <div class="col-lg-9">
+                                <h3>Questão: </h3>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTquestao" id="DTquestao" placeholder="Pergunta numero 1 da prova"></textarea>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <div style="margin-left: 100px;" class="col-lg-9">
+                                <br />
+                                <h4>Resposta: </h4>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTreposta" id="DTreposta" placeholder="Reposta do aluno"></textarea>
+                            </div>
+                            <div style="margin-left: 100px;" class="col-lg-3">
+
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <br />
+                            <label>&nbsp;</label>
+                            <button witdh="50" title="Salvar" class="btn btn-default btn-sm btn-diss" onclick="SalvarQuestão()">Salvar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div>
+                <h2>Questão 2</h2>
+                <form method="post">
+                    <fieldset>
+                        <div style="margin-left: 100px;">
+                            <br />
+                            <div class="col-lg-9">
+                                <h3>Questão: </h3>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTquestao" id="DTquestao"></textarea>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <div style="margin-left: 100px;" class="col-lg-9">
+                                <br />
+                                <h4>Resposta: </h4>
+                                <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTreposta" id="DTreposta"></textarea>
+                            </div>
+                            <div style="margin-left: 100px;" class="col-lg-3">
+
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <br />
+                            <label>&nbsp;</label>
+                            <button witdh="50" title="Salvar" class="btn btn-default btn-sm btn-diss" onclick="SalvarQuestão()">Salvar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div>
+                <label>&nbsp;</label>
+                <button witdh="50" title="Salvar" class="btn btn-default btn-sm btn-diss btn-orange" onclick="SalvarProva()">Enviar Prova</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function SolicitarRevisao() {
+        console.log("Solicitação Enviada...");
+        $('#ConfirmaRevisao').modal('hide');
+    }
+
+    function SalvarProva() {
+        console.log("Prova Realizada...");
+        $('#RealizarProva').modal('hide');
+    }
+
+    $(function () { @*//remover*@
+        $(".btn-toggle").click(function (e) {
+            e.preventDefault();
+            el = $(this).data('element');
+            $(el).toggle();
+        });
+    });
+
+</script>

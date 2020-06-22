@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "GerarProva";
+}
+
+<h2>Gerar Prova</h2>
+<br />
+<div>
+    <table class="table">
+        <tr>
+            <th style="width: 30%;">Titulo da Prova</th>
+            <th style="width: 30%;">Data da Prova</th>
+            <th style="width: 30%;">Nota Maxima</th>
+        </tr>
+        <tr>
+            <td><input class="setep" type="text" name="Titulo" value="" id="Titulo" /></td>
+            <td><input class="meiop" type="text" name="DataProva1" value="" id="DataProva1" /> até <input class="meiop" type="text" name="DataProva2" value="" id="DataProva2" /></td>
+            <td><input class="cincp" type="text" name="NMax" value="" id="NMax" /></td>
+        </tr>
+        <tr>
+            <th>Disciplina</th>
+            <th>Assunto</th>
+            <th>Turma</th>
+        </tr>
+        <tr>
+            <td>
+                <select class="form-control" id="Disciplinas" name="Disciplinas">
+                    <option>Selecione</option>
+                    <option>Disciplina1</option>
+                    <option>Disciplina2</option>
+                </select>
+            </td>
+            <td>
+                <select class="form-control" id="Assuntos" name="Assuntos">
+                    <option>Selecione</option>
+                    <option>Assunto1</option>
+                    <option>Assunto2</option>
+                </select>
+            </td>
+            <td>
+                <select class="form-control" id="Turmas" name="Turmas">
+                    <option>Selecione</option>
+                    <option>Turma1</option>
+                    <option>Turma2</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    @*aqui vai as opções de questão e a quantidade de cada dificuldade*@
+    <div class="col-lg-12">
+        <div class="col-lg-6">
+            <table class="tablep">
+                <tr>
+                    <th>    </th>
+                    <th>Tipo de Questão</th>
+                    <th class="thc"> Quantidade</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="chbxSE" name="SE" value="SE"></th>
+                    <th>Simples-Escolha</th>
+                    <th class="thc"><input class="cincp" type="text" name="SEQuant" value="" id="SEQuant" /></th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="chbxME" name="ME" value="ME"></th>
+                    <th>Multipla-Escolha</th>
+                    <th class="thc"><input class="cincp" type="text" name="MEQuant" value="" id="MEQuant" /></th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="chbxVF" name="VF" value="VF"></th>
+                    <th>Verdadeiro ou Falso</th>
+                    <th class="thc"><input class="cincp" type="text" name="VFQuant" value="" id="VFQuant" /></th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="chbxDT" name="DT" value="DT"></th>
+                    <th>Dissertativa</th>
+                    <th class="thc"><input class="cincp" type="text" name="DTQuant" value="" id="DTQuant" /></th>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="col-lg-6">
+            <h4>Configuração da faixa de correto/incorreto:</h4>
+            <table class="tablep thc">
+                <tr>
+                    <th class="thc" style="width: 30%;">Incorreto</th>
+                    <th class="thc" style="width: 30%;">Revisar</th>
+                    <th class="thc" style="width: 30%;">Correto</th>
+                </tr>
+                <tr>
+                    <td><input class="meiop thc" type="text" name="Incorreto1" value="" id="Incorreto1" />a<input class="meiop thc" type="text" name="Incorreto2" value="" id="Incorreto2" /></td>
+                    <td><input class="meiop thc" type="text" name="Revisar1" value="" id="Revisar1" />a<input class="meiop thc" type="text" name="Revisar2" value="" id="Revisar2" /></td>
+                    <td><input class="meiop thc" type="text" name="Correto1" value="" id="Correto1" />a<input class="meiop thc" type="text" name="Correto2" value="" id="Correto2" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<br />
+<div>
+    <button witdh="50" title="Criar" class="btn btn-default btn-sm" onclick="GerarPreova()">Criar</button>
+</div>
+
+@*<div id="divCP" class="tab-pane fade in active">
+    <h4>Configuração da faixa de correto/incorreto:</h4>
+    <table class="tablep thc">
+        <tr>
+            <th class="thc" style="width: 30%;">Incorreto</th>
+            <th class="thc" style="width: 30%;">Revisar</th>
+            <th class="thc" style="width: 30%;">Correto</th>
+        </tr>
+        <tr>
+            <td><input class="meiop thc" type="text" name="Incorreto1" value="" id="Incorreto1" />a<input class="meiop thc" type="text" name="Incorreto2" value="" id="Incorreto2" /></td>
+            <td><input class="meiop thc" type="text" name="Revisar1" value="" id="Revisar1" />a<input class="meiop thc" type="text" name="Revisar2" value="" id="Revisar2" /></td>
+            <td><input class="meiop thc" type="text" name="Correto1" value="" id="Correto1" />a<input class="meiop thc" type="text" name="Correto2" value="" id="Correto2" /></td>
+        </tr>
+    </table>
+    <br />
+    <div>
+        <button witdh="50" title="Criar" class="btn btn-default btn-sm" onclick="GerarPreova()">Criar</button>
+    </div>
+</div>*@
