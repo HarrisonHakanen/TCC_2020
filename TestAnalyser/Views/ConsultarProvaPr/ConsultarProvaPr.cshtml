@@ -250,7 +250,7 @@
             <div class="col-lg-4">
                 <button witdh="50" title="Editar" class="btn btn-default btn-sm" data-toggle="modal" data-target="#EditarProva">Editar</button>
                 <button witdh="50" title="Excluir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ExcluirProva">Excluir</button>
-                <button witdh="50" title="Vincular" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ExcluirProva">Vincular</button>
+                <button witdh="50" title="Vincular" class="btn btn-default btn-sm" data-toggle="modal" data-target="#VincularProva">Vincular</button>
             </div>
         </div>
         <div>
@@ -260,13 +260,49 @@
             <div class="col-lg-4">
                 <button witdh="50" title="Editar" class="btn btn-default btn-sm" data-toggle="modal" data-target="#EditarProva">Editar</button>
                 <button witdh="50" title="Excluir" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ExcluirProva">Excluir</button>
-                <button witdh="50" title="Vincular" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ExcluirProva">Vincular</button>
+                <button witdh="50" title="Vincular" class="btn btn-default btn-sm" data-toggle="modal" data-target="#VincularProva">Vincular</button>
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="VincularProva">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Vincular Prova:</h4>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <th>Turmas</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control" id="Turmas" name="Turmas">
+                                <option>Selecione</option>
+                                <option>Turma1</option>
+                                <option>Turma2</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="VincularProva()">Vincular</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script>
+
+    function VincularProva() {
+        console.log("Prova vinculada...");
+        $('#VincularProva').modal('hide');
+    }
 
     var div1 = document.getElementById('divGridConsultaPr'),
     div2 = document.getElementById('divGridConsultaProvaPend');

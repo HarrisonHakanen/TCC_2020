@@ -99,25 +99,135 @@
 </div>
 <br />
 <div>
-    <button witdh="50" title="Criar" class="btn btn-default btn-sm" onclick="GerarPreova()">Criar</button>
+    <button id="GerarProva" witdh="50" title="Criar" class="btn btn-default btn-sm" data-toggle="modal" data-target="#DivGerarProva" onclick="GerarProva()">Criar</button>
 </div>
 
 @*<div id="divCP" class="tab-pane fade in active">
-    <h4>Configuração da faixa de correto/incorreto:</h4>
-    <table class="tablep thc">
-        <tr>
-            <th class="thc" style="width: 30%;">Incorreto</th>
-            <th class="thc" style="width: 30%;">Revisar</th>
-            <th class="thc" style="width: 30%;">Correto</th>
-        </tr>
-        <tr>
-            <td><input class="meiop thc" type="text" name="Incorreto1" value="" id="Incorreto1" />a<input class="meiop thc" type="text" name="Incorreto2" value="" id="Incorreto2" /></td>
-            <td><input class="meiop thc" type="text" name="Revisar1" value="" id="Revisar1" />a<input class="meiop thc" type="text" name="Revisar2" value="" id="Revisar2" /></td>
-            <td><input class="meiop thc" type="text" name="Correto1" value="" id="Correto1" />a<input class="meiop thc" type="text" name="Correto2" value="" id="Correto2" /></td>
-        </tr>
-    </table>
-    <br />
-    <div>
-        <button witdh="50" title="Criar" class="btn btn-default btn-sm" onclick="GerarPreova()">Criar</button>
+        <h4>Configuração da faixa de correto/incorreto:</h4>
+        <table class="tablep thc">
+            <tr>
+                <th class="thc" style="width: 30%;">Incorreto</th>
+                <th class="thc" style="width: 30%;">Revisar</th>
+                <th class="thc" style="width: 30%;">Correto</th>
+            </tr>
+            <tr>
+                <td><input class="meiop thc" type="text" name="Incorreto1" value="" id="Incorreto1" />a<input class="meiop thc" type="text" name="Incorreto2" value="" id="Incorreto2" /></td>
+                <td><input class="meiop thc" type="text" name="Revisar1" value="" id="Revisar1" />a<input class="meiop thc" type="text" name="Revisar2" value="" id="Revisar2" /></td>
+                <td><input class="meiop thc" type="text" name="Correto1" value="" id="Correto1" />a<input class="meiop thc" type="text" name="Correto2" value="" id="Correto2" /></td>
+            </tr>
+        </table>
+        <br />
+        <div>
+            <button witdh="50" title="Criar" class="btn btn-default btn-sm" onclick="GerarPreova()">Criar</button>
+        </div>
+    </div>*@
+
+@* Modal com as questões que o professor pode revisar e trocar *@
+<div class="modal fade" id="DivGerarProva">
+    <div class="modal-dialog novep">
+        <div class="modal-content">
+            <div>
+                <h2>Questão 1</h2>
+                <form method="post">
+                    <fieldset>
+                        <div class="col-lg-10">
+                            <div style="margin-left: 100px;">
+                                <br />
+                                <div class="">
+                                    <h3>Questão: </h3>
+                                    <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTquestao" id="DTquestao" placeholder="Pergunta numero 1 da prova"></textarea>
+                                </div>
+                            </div>
+                            <br />
+                            <div>
+                                <div style="margin-left: 100px;" class="">
+                                    <br />
+                                    <h4>Resposta: </h4>
+                                    <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTreposta" id="DTreposta" placeholder="Reposta do aluno"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="col-lg-2">
+                            <br />
+                            <table class="tablep">
+                                <tr>
+                                    <th>Trocar</th>
+                                    <th>Nota</th>
+                                </tr>
+                                <tr>
+                                    <td><button witdh="50" title="Trocar Questão" class="btn btn-default btn-sm glyphicon glyphicon-refresh" onclick="TrocarQuestão()"></button></td>
+                                    <td><input class="cincp" type="text" name="ValorQuestao" value="" id="ValorQuestao" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-lg-12">
+                <h2>Questão 2</h2>
+                <form method="post">
+                    <fieldset>
+                        <div class="col-lg-10">
+                            <div style="margin-left: 100px;">
+                                <br />
+                                <div class="">
+                                    <h3>Questão: </h3>
+                                    <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTquestao" id="DTquestao"></textarea>
+                                </div>
+                            </div>
+                            <br />
+                            <div>
+                                <div style="margin-left: 100px;" class="">
+                                    <br />
+                                    <h4>Resposta: </h4>
+                                    <textarea class="oitop" cols="30" rows="5" wrap="hard" name="DTreposta" id="DTreposta"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="col-lg-2">
+                            <br />
+                            <table class="tablep">
+                                <tr>
+                                    <th>Trocar</th>
+                                    <th>Nota</th>
+                                </tr>
+                                <tr>
+                                    <td><button witdh="50" title="Trocar Questão" class="btn btn-default btn-sm glyphicon glyphicon-refresh" onclick="TrocarQuestão()"></button></td>
+                                    <td><input class="cincp" type="text" name="ValorQuestao" value="" id="ValorQuestao" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div>
+                <label>&nbsp;</label>
+                <button witdh="50" title="Salvar" class="btn btn-default btn-sm btn-diss btn-orange" onclick="SalvarProva()">Salvar Prova</button>
+            </div>
+        </div>
     </div>
-</div>*@
+</div>
+
+<script>
+
+    function SalvarProva() {
+        console.log("Prova Criada e Salva...");
+        $('#DivGerarProva').modal('hide');
+        location.href = "http://localhost:54994/GerarProva/GerarProva";
+    }
+
+    function TrocarQuestao() {
+
+    }
+
+    $(function () {
+        $(".btn-toggle").click(function (e) {
+            e.preventDefault();
+            el = $(this).data('element');
+            $(el).toggle();
+        });
+    });
+
+</script>
